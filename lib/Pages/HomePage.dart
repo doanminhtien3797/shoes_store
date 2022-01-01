@@ -101,8 +101,8 @@ class _HomeState extends State<HomePage> {
       child: InkWell(
         onTap: (){},
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(10.0,0.0,10.0,0.0),
-          child: _showImageInCarousel()
+            padding: const EdgeInsets.fromLTRB(10.0,0.0,10.0,0.0),
+            child: _showImageInCarousel()
         ),
       ),
     );
@@ -111,9 +111,9 @@ class _HomeState extends State<HomePage> {
         if(constraints.maxWidth < 350){
           return Scaffold(
             appBar: new AppBar(
-              iconTheme: IconThemeData(color: Colors.deepOrange),
+              iconTheme: IconThemeData(color: Colors.blueAccent),
               elevation: 0.0,
-              title: Text("H M T", style: TextStyle(color:Colors.deepOrange, fontSize: 18.0),),
+              title: Text("SHOES STORE", style: TextStyle(color:Colors.blueAccent, fontSize: 18.0, fontWeight: FontWeight.bold),),
               centerTitle: true,
               backgroundColor: Colors.white,
               actions: <Widget>[
@@ -130,8 +130,9 @@ class _HomeState extends State<HomePage> {
                           return Text("0");
                         }else{
                           return Badge(
+                            badgeColor: Colors.blueAccent,
                             badgeContent: _showQuantity(snapshot),
-                            child: Icon(Icons.shopping_cart),
+                            child: Icon(Icons.shopping_cart, color: Colors.blueAccent,),
                             position: BadgePosition.topStart(top:5,start: 15),
                           );
                         }
@@ -174,7 +175,7 @@ class _HomeState extends State<HomePage> {
                           },
                           controller: _searchController,
                           decoration: InputDecoration(
-                            icon: Icon(Icons.search, color: Colors.deepOrange,),
+                            icon: Icon(Icons.search, color: Colors.blueAccent,),
                             hintText: "What are you shopping for today?",
                             border: InputBorder.none,
                           ),
@@ -188,7 +189,7 @@ class _HomeState extends State<HomePage> {
                     child: imageCarousel,
                   ),
                   new Padding(padding: EdgeInsets.fromLTRB(10.0, 20.0, 0.0, 5.0),
-                    child: Text('Categories', style: TextStyle(fontSize: 20.0,color: Colors.deepOrange, fontWeight: FontWeight.bold),),
+                    child: Text('Categories', style: TextStyle(fontSize: 24.0,color: Colors.blueAccent, fontWeight: FontWeight.bold),),
                   ),
                   Container(
                     child: StreamBuilder(
@@ -205,10 +206,10 @@ class _HomeState extends State<HomePage> {
                           }
                         }
                     ),
-                    height: 90,
+                    height: 150,
                   ),
                   new Padding(padding: EdgeInsets.fromLTRB(10.0, 20.0, 0.0, 5.0),
-                    child: Text('Brands', style: TextStyle(fontSize: 20.0,color: Colors.deepOrange, fontWeight: FontWeight.bold),),
+                    child: Text('Brands', style: TextStyle(fontSize: 24.0,color: Colors.blueAccent, fontWeight: FontWeight.bold),),
                   ),
                   Container(
                     child: StreamBuilder(
@@ -233,7 +234,7 @@ class _HomeState extends State<HomePage> {
                         padding: const EdgeInsets.all(14.0),
                         child: Container(
                             alignment: Alignment.centerLeft,
-                            child: new Text('Featured products', style: TextStyle(color:Colors.deepOrange, fontWeight: FontWeight.bold, fontSize: 18.0),)),
+                            child: new Text('Featured products', style: TextStyle(color:Colors.blueAccent, fontWeight: FontWeight.bold, fontSize: 24.0),)),
                       ),
                     ],
                   ),
@@ -244,97 +245,26 @@ class _HomeState extends State<HomePage> {
                         padding: const EdgeInsets.all(14.0),
                         child: Container(
                             alignment: Alignment.centerLeft,
-                            child: new Text('Sale products', style: TextStyle(color:Colors.deepOrange, fontWeight: FontWeight.bold, fontSize: 18.0),)),
+                            child: new Text('Sale products', style: TextStyle(color:Colors.blueAccent, fontWeight: FontWeight.bold, fontSize: 18.0),)),
                       ),
                     ],
                   ),
                   SaleProducts(),
                   Padding(padding: EdgeInsets.all(8.0),
-                    child: Text('Recent products', style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold, color: Colors.deepOrange),),
+                    child: Text('Recent products', style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold, color: Colors.blueAccent),),
                   ),
                   RecentProducts(),
                 ],
               ),
             ),
-            bottomNavigationBar: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  Card(
-                    elevation: 10.0,
-                    child: FlatButton(
-                      onPressed: (){
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => ListCategories()));
-                      },
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: <Widget>[
-                          Icon(Icons.category, color: Colors.black,),
-                          Text("Categories", style: TextStyle(color: Colors.black),),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Card(
-                    elevation: 10.0,
-                    child: FlatButton(
-                      onPressed: (){
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => ListBrands()));
-                      },
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: <Widget>[
-                          Icon(Icons.label, color: Colors.black,),
-                          Text("Brands", style: TextStyle(color: Colors.black),),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Card(
-                    elevation: 10.0,
-                    child: FlatButton(
-                      onPressed: (){
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context)=>ListProductsFavourite(email: widget.user.email)));
-                      },
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: <Widget>[
-                          Icon(Icons.favorite, color: Colors.black,),
-                          Text("Favourite", style: TextStyle(color: Colors.black),),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Card(
-                    elevation: 10.0,
-                    child: FlatButton(
-                      onPressed: (){
-                        Navigator.push(
-                            context, MaterialPageRoute(builder: (context) => CartPage(email: widget.user.email,)));
-                      },
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: <Widget>[
-                          Icon(Icons.shopping_cart, color: Colors.black,),
-                          Text("Cart", style: TextStyle(color: Colors.black),),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            bottomNavigationBar: _bottomBar(),
           );
         }else if(constraints.maxWidth > 351 && constraints.maxWidth < 410){
           return Scaffold(
             appBar: new AppBar(
-              iconTheme: IconThemeData(color: Colors.deepOrange),
+              iconTheme: IconThemeData(color: Colors.blueAccent),
               elevation: 0.0,
-              title: Text("H M T", style: TextStyle(color:Colors.deepOrange, fontSize: 18.0),),
+              title: Text("SHOES STORE", style: TextStyle(color:Colors.blueAccent, fontSize: 18.0, fontWeight: FontWeight.bold),),
               centerTitle: true,
               backgroundColor: Colors.white,
               actions: <Widget>[
@@ -351,8 +281,9 @@ class _HomeState extends State<HomePage> {
                           return Text("0");
                         }else{
                           return Badge(
+                            badgeColor: Colors.blueAccent,
                             badgeContent: _showQuantity(snapshot),
-                            child: Icon(Icons.shopping_cart),
+                            child: Icon(Icons.shopping_cart, color: Colors.blueAccent,),
                             position: BadgePosition.topStart(top:5,start: 15),
                           );
                         }
@@ -395,7 +326,7 @@ class _HomeState extends State<HomePage> {
                           },
                           controller: _searchController,
                           decoration: InputDecoration(
-                            icon: Icon(Icons.search, color: Colors.deepOrange,),
+                            icon: Icon(Icons.search, color: Colors.blueAccent,),
                             hintText: "What are you shopping for today?",
                             border: InputBorder.none,
                           ),
@@ -409,7 +340,7 @@ class _HomeState extends State<HomePage> {
                     child: imageCarousel,
                   ),
                   new Padding(padding: EdgeInsets.fromLTRB(10.0, 20.0, 0.0, 5.0),
-                    child: Text('Categories', style: TextStyle(fontSize: 20.0,color: Colors.deepOrange, fontWeight: FontWeight.bold),),
+                    child: Text('Categories', style: TextStyle(fontSize: 24.0,color: Colors.blueAccent, fontWeight: FontWeight.bold),),
                   ),
                   Container(
                     child: StreamBuilder(
@@ -426,10 +357,10 @@ class _HomeState extends State<HomePage> {
                           }
                         }
                     ),
-                    height: 90,
+                    height: 150,
                   ),
                   new Padding(padding: EdgeInsets.fromLTRB(10.0, 20.0, 0.0, 5.0),
-                    child: Text('Brands', style: TextStyle(fontSize: 20.0,color: Colors.deepOrange, fontWeight: FontWeight.bold),),
+                    child: Text('Brands', style: TextStyle(fontSize: 24.0,color: Colors.blueAccent, fontWeight: FontWeight.bold),),
                   ),
                   Container(
                     child: StreamBuilder(
@@ -454,7 +385,7 @@ class _HomeState extends State<HomePage> {
                         padding: const EdgeInsets.all(14.0),
                         child: Container(
                             alignment: Alignment.centerLeft,
-                            child: new Text('Featured products', style: TextStyle(color:Colors.deepOrange, fontWeight: FontWeight.bold, fontSize: 18.0),)),
+                            child: new Text('Featured products', style: TextStyle(color:Colors.blueAccent, fontWeight: FontWeight.bold, fontSize: 24.0),)),
                       ),
                     ],
                   ),
@@ -465,97 +396,26 @@ class _HomeState extends State<HomePage> {
                         padding: const EdgeInsets.all(14.0),
                         child: Container(
                             alignment: Alignment.centerLeft,
-                            child: new Text('Sale products', style: TextStyle(color:Colors.deepOrange, fontWeight: FontWeight.bold, fontSize: 18.0),)),
+                            child: new Text('Sale products', style: TextStyle(color:Colors.blueAccent, fontWeight: FontWeight.bold, fontSize: 24.0),)),
                       ),
                     ],
                   ),
                   SaleProducts(),
                   Padding(padding: EdgeInsets.all(8.0),
-                    child: Text('Recent products', style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold, color: Colors.deepOrange),),
+                    child: Text('Recent products', style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold, color: Colors.blueAccent),),
                   ),
                   RecentProducts(),
                 ],
               ),
             ),
-            bottomNavigationBar: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  Card(
-                    elevation: 10.0,
-                    child: FlatButton(
-                      onPressed: (){
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => ListCategories()));
-                      },
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: <Widget>[
-                          Icon(Icons.category, color: Colors.black,),
-                          Text("Categories", style: TextStyle(color: Colors.black),),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Card(
-                    elevation: 10.0,
-                    child: FlatButton(
-                      onPressed: (){
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => ListBrands()));
-                      },
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: <Widget>[
-                          Icon(Icons.label, color: Colors.black,),
-                          Text("Brands", style: TextStyle(color: Colors.black),),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Card(
-                    elevation: 10.0,
-                    child: FlatButton(
-                      onPressed: (){
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context)=>ListProductsFavourite(email: widget.user.email)));
-                      },
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: <Widget>[
-                          Icon(Icons.favorite, color: Colors.black,),
-                          Text("Favourite", style: TextStyle(color: Colors.black),),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Card(
-                    elevation: 10.0,
-                    child: FlatButton(
-                      onPressed: (){
-                        Navigator.push(
-                            context, MaterialPageRoute(builder: (context) => CartPage(email: widget.user.email,)));
-                      },
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: <Widget>[
-                          Icon(Icons.shopping_cart, color: Colors.black,),
-                          Text("Cart", style: TextStyle(color: Colors.black),),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            bottomNavigationBar: _bottomBar(),
           );
         }else if(constraints.maxWidth > 411 && constraints.maxWidth < 500){
           return Scaffold(
             appBar: new AppBar(
-              iconTheme: IconThemeData(color: Colors.deepOrange),
+              iconTheme: IconThemeData(color: Colors.blueAccent),
               elevation: 0.0,
-              title: Text("H M T", style: TextStyle(color:Colors.deepOrange, fontSize: 18.0),),
+              title: Text("SHOES STORE", style: TextStyle(color:Colors.blueAccent, fontSize: 18.0, fontWeight: FontWeight.bold),),
               centerTitle: true,
               backgroundColor: Colors.white,
               actions: <Widget>[
@@ -572,8 +432,9 @@ class _HomeState extends State<HomePage> {
                           return Text("0");
                         }else{
                           return Badge(
+                            badgeColor: Colors.blueAccent,
                             badgeContent: _showQuantity(snapshot),
-                            child: Icon(Icons.shopping_cart),
+                            child: Icon(Icons.shopping_cart, color: Colors.blueAccent,),
                             position: BadgePosition.topStart(top:5,start: 15),
                           );
                         }
@@ -616,7 +477,7 @@ class _HomeState extends State<HomePage> {
                           },
                           controller: _searchController,
                           decoration: InputDecoration(
-                            icon: Icon(Icons.search, color: Colors.deepOrange,),
+                            icon: Icon(Icons.search, color: Colors.blueAccent,),
                             hintText: "What are you shopping for today?",
                             border: InputBorder.none,
                           ),
@@ -630,7 +491,7 @@ class _HomeState extends State<HomePage> {
                     child: imageCarousel,
                   ),
                   new Padding(padding: EdgeInsets.fromLTRB(10.0, 20.0, 0.0, 5.0),
-                    child: Text('Categories', style: TextStyle(fontSize: 20.0,color: Colors.deepOrange, fontWeight: FontWeight.bold),),
+                    child: Text('Categories', style: TextStyle(fontSize: 24.0,color: Colors.blueAccent, fontWeight: FontWeight.bold),),
                   ),
                   Container(
                     child: StreamBuilder(
@@ -647,10 +508,10 @@ class _HomeState extends State<HomePage> {
                           }
                         }
                     ),
-                    height: 90,
+                    height: 150,
                   ),
                   new Padding(padding: EdgeInsets.fromLTRB(10.0, 20.0, 0.0, 5.0),
-                    child: Text('Brands', style: TextStyle(fontSize: 20.0,color: Colors.deepOrange, fontWeight: FontWeight.bold),),
+                    child: Text('Brands', style: TextStyle(fontSize: 24.0,color: Colors.blueAccent, fontWeight: FontWeight.bold),),
                   ),
                   Container(
                     child: StreamBuilder(
@@ -675,7 +536,7 @@ class _HomeState extends State<HomePage> {
                         padding: const EdgeInsets.all(14.0),
                         child: Container(
                             alignment: Alignment.centerLeft,
-                            child: new Text('Featured products', style: TextStyle(color:Colors.deepOrange, fontWeight: FontWeight.bold, fontSize: 18.0),)),
+                            child: new Text('Featured products', style: TextStyle(color:Colors.blueAccent, fontWeight: FontWeight.bold, fontSize: 24.0),)),
                       ),
                     ],
                   ),
@@ -686,94 +547,26 @@ class _HomeState extends State<HomePage> {
                         padding: const EdgeInsets.all(14.0),
                         child: Container(
                             alignment: Alignment.centerLeft,
-                            child: new Text('Sale products', style: TextStyle(color:Colors.deepOrange, fontWeight: FontWeight.bold, fontSize: 18.0),)),
+                            child: new Text('Sale products', style: TextStyle(color:Colors.blueAccent, fontWeight: FontWeight.bold, fontSize: 24.0),)),
                       ),
                     ],
                   ),
                   SaleProducts(),
                   Padding(padding: EdgeInsets.all(8.0),
-                    child: Text('Recent products', style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold, color: Colors.deepOrange),),
+                    child: Text('Recent products', style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold, color: Colors.blueAccent),),
                   ),
                   RecentProducts(),
                 ],
               ),
             ),
-            bottomNavigationBar: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                Card(
-                  elevation: 10.0,
-                  child: FlatButton(
-                    onPressed: (){
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => ListCategories()));
-                    },
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
-                        Icon(Icons.category, color: Colors.black,),
-                        Text("Categories", style: TextStyle(color: Colors.black),),
-                      ],
-                    ),
-                  ),
-                ),
-                Card(
-                  elevation: 10.0,
-                  child: FlatButton(
-                    onPressed: (){
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => ListBrands()));
-                    },
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
-                        Icon(Icons.label, color: Colors.black,),
-                        Text("Brands", style: TextStyle(color: Colors.black),),
-                      ],
-                    ),
-                  ),
-                ),
-                Card(
-                  elevation: 10.0,
-                  child: FlatButton(
-                    onPressed: (){
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context)=>ListProductsFavourite(email: widget.user.email)));
-                    },
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
-                        Icon(Icons.favorite, color: Colors.black,),
-                        Text("Favourite", style: TextStyle(color: Colors.black),),
-                      ],
-                    ),
-                  ),
-                ),
-                Card(
-                  elevation: 10.0,
-                  child: FlatButton(
-                    onPressed: (){
-                      Navigator.push(
-                          context, MaterialPageRoute(builder: (context) => CartPage(email: widget.user.email,)));
-                    },
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
-                        Icon(Icons.shopping_cart, color: Colors.black,),
-                        Text("Cart", style: TextStyle(color: Colors.black),),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
+            bottomNavigationBar: _bottomBar(),
           );
         }else if(constraints.maxWidth > 501){
           return Scaffold(
             appBar: new AppBar(
-              iconTheme: IconThemeData(color: Colors.deepOrange),
+              iconTheme: IconThemeData(color: Colors.blueAccent),
               elevation: 0.0,
-              title: Text("H M T", style: TextStyle(color:Colors.deepOrange, fontSize: 18.0),),
+              title: Text("SHOES STORE", style: TextStyle(color:Colors.blueAccent, fontSize: 18.0, fontWeight: FontWeight.bold),),
               centerTitle: true,
               backgroundColor: Colors.white,
               actions: <Widget>[
@@ -790,8 +583,9 @@ class _HomeState extends State<HomePage> {
                           return Text("0");
                         }else{
                           return Badge(
+                            badgeColor: Colors.blueAccent,
                             badgeContent: _showQuantity(snapshot),
-                            child: Icon(Icons.shopping_cart),
+                            child: Icon(Icons.shopping_cart, color: Colors.blueAccent,),
                             position: BadgePosition.topStart(top:5,start: 15),
                           );
                         }
@@ -834,7 +628,7 @@ class _HomeState extends State<HomePage> {
                           },
                           controller: _searchController,
                           decoration: InputDecoration(
-                            icon: Icon(Icons.search, color: Colors.deepOrange,),
+                            icon: Icon(Icons.search, color: Colors.blueAccent,),
                             hintText: "What are you shopping for today?",
                             border: InputBorder.none,
                           ),
@@ -848,7 +642,7 @@ class _HomeState extends State<HomePage> {
                     child: imageCarousel,
                   ),
                   new Padding(padding: EdgeInsets.fromLTRB(10.0, 20.0, 0.0, 5.0),
-                    child: Text('Categories', style: TextStyle(fontSize: 20.0,color: Colors.deepOrange, fontWeight: FontWeight.bold),),
+                    child: Text('Categories', style: TextStyle(fontSize: 24.0,color: Colors.blueAccent, fontWeight: FontWeight.bold),),
                   ),
                   Container(
                     child: StreamBuilder(
@@ -865,10 +659,10 @@ class _HomeState extends State<HomePage> {
                           }
                         }
                     ),
-                    height: 90,
+                    height: 150,
                   ),
                   new Padding(padding: EdgeInsets.fromLTRB(10.0, 20.0, 0.0, 5.0),
-                    child: Text('Brands', style: TextStyle(fontSize: 20.0,color: Colors.deepOrange, fontWeight: FontWeight.bold),),
+                    child: Text('Brands', style: TextStyle(fontSize: 24.0,color: Colors.blueAccent, fontWeight: FontWeight.bold),),
                   ),
                   Container(
                     child: StreamBuilder(
@@ -893,7 +687,7 @@ class _HomeState extends State<HomePage> {
                         padding: const EdgeInsets.all(14.0),
                         child: Container(
                             alignment: Alignment.centerLeft,
-                            child: new Text('Featured products', style: TextStyle(color:Colors.deepOrange, fontWeight: FontWeight.bold, fontSize: 18.0),)),
+                            child: new Text('Featured products', style: TextStyle(color:Colors.blueAccent, fontWeight: FontWeight.bold, fontSize: 24.0),)),
                       ),
                     ],
                   ),
@@ -904,87 +698,19 @@ class _HomeState extends State<HomePage> {
                         padding: const EdgeInsets.all(14.0),
                         child: Container(
                             alignment: Alignment.centerLeft,
-                            child: new Text('Sale products', style: TextStyle(color:Colors.deepOrange, fontWeight: FontWeight.bold, fontSize: 18.0),)),
+                            child: new Text('Sale products', style: TextStyle(color:Colors.blueAccent, fontWeight: FontWeight.bold, fontSize: 24.0),)),
                       ),
                     ],
                   ),
                   SaleProducts(),
                   Padding(padding: EdgeInsets.all(8.0),
-                    child: Text('Recent products', style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold, color: Colors.deepOrange),),
+                    child: Text('Recent products', style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold, color: Colors.blueAccent),),
                   ),
                   RecentProducts(),
                 ],
               ),
             ),
-            bottomNavigationBar: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                Card(
-                  elevation: 10.0,
-                  child: FlatButton(
-                    onPressed: (){
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => ListCategories()));
-                    },
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
-                        Icon(Icons.category, color: Colors.black,),
-                        Text("Categories", style: TextStyle(color: Colors.black),),
-                      ],
-                    ),
-                  ),
-                ),
-                Card(
-                  elevation: 10.0,
-                  child: FlatButton(
-                    onPressed: (){
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => ListBrands()));
-                    },
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
-                        Icon(Icons.label, color: Colors.black,),
-                        Text("Brands", style: TextStyle(color: Colors.black),),
-                      ],
-                    ),
-                  ),
-                ),
-                Card(
-                  elevation: 10.0,
-                  child: FlatButton(
-                    onPressed: (){
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context)=>ListProductsFavourite(email: widget.user.email)));
-                    },
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
-                        Icon(Icons.favorite, color: Colors.black,),
-                        Text("Favourite", style: TextStyle(color: Colors.black),),
-                      ],
-                    ),
-                  ),
-                ),
-                Card(
-                  elevation: 10.0,
-                  child: FlatButton(
-                    onPressed: (){
-                      Navigator.push(
-                          context, MaterialPageRoute(builder: (context) => CartPage(email: widget.user.email,)));
-                    },
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
-                        Icon(Icons.shopping_cart, color: Colors.black,),
-                        Text("Cart", style: TextStyle(color: Colors.black),),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
+            bottomNavigationBar: _bottomBar(),
           );
         }else return null;
       },
@@ -995,6 +721,86 @@ class _HomeState extends State<HomePage> {
     setState(() {
       _sliders = data;
     });
+  }
+
+  Widget _bottomBar(){
+    return Container(
+      padding: EdgeInsets.only(top: 10, bottom: 5),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: <Widget>[
+          Expanded(
+            child: InkWell(
+              onTap: (){
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => ListCategories()));
+              },
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  Icon(Icons.category, color: Colors.blueAccent,),
+                  Text("Categories", style: TextStyle(color: Colors.black),),
+                ],
+              ),
+            ),
+          ),
+          Expanded(
+            child: InkWell(
+              onTap: (){
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => ListBrands()));
+              },
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  Icon(Icons.label, color: Colors.blueAccent,),
+                  Text("Brands", style: TextStyle(color: Colors.black),),
+                ],
+              ),
+            ),
+          ),
+          Expanded(
+            child: InkWell(
+              onTap: (){
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context)=>ListProductsFavourite(email: widget.user.email)));
+              },
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  Icon(Icons.favorite, color: Colors.blueAccent,),
+                  Text("Favourite", style: TextStyle(color: Colors.black),),
+                ],
+              ),
+            ),
+          ),
+          Expanded(
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => CartPage(
+                            email: widget.user.email,
+                          )));
+                },
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    Icon(
+                      Icons.shopping_cart,
+                      color: Colors.blueAccent,
+                    ),
+                    Text(
+                      "Cart",
+                      style: TextStyle(color: Colors.black),
+                    ),
+                  ],
+                ),
+              )),
+        ],
+      ),
+    );
   }
 
   void _getProducts() async{
@@ -1028,45 +834,45 @@ class _HomeState extends State<HomePage> {
     return items;
   }
 
-   _horizontalViewCategories(AsyncSnapshot<QuerySnapshot> snapshot){
-        return snapshot.data.documents.map((document)=>
-            Container(
-              width: 120,
-              child: Card(
-                color: Colors.white70,
-                child: ListTile(
-                  onTap: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=>ListProductsInCategory(category: document["categoryName"])));
-                  },
-                  title: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Image.network(document["categoryImage"]),
-                  ),
-                ),
+  _horizontalViewCategories(AsyncSnapshot<QuerySnapshot> snapshot){
+    return snapshot.data.documents.map((document)=>
+        Container(
+          width: MediaQuery.of(context).size.width / 2 ,
+          child: Card(
+            color: Colors.white70,
+            child: ListTile(
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>ListProductsInCategory(category: document["categoryName"])));
+              },
+              title: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Image.network(document["categoryImage"], fit: BoxFit.cover,),
               ),
-            )
-        ).toList();
+            ),
+          ),
+        )
+    ).toList();
   }
 
   _showImageInCarousel(){
     if(_sliders.length > 0){
-     return ListView(
-         scrollDirection: Axis.vertical,
-         shrinkWrap: true,
-         children: <Widget>[
-            Container(
-              height: 150,
-              child: Carousel(
-                images: getImages(),
-                animationCurve: Curves.fastOutSlowIn,
-                animationDuration: Duration(milliseconds: 1000),
-                dotSize: 3,
-                indicatorBgPadding: 10,
-                dotBgColor: Colors.transparent,
-              ),
+      return ListView(
+        scrollDirection: Axis.vertical,
+        shrinkWrap: true,
+        children: <Widget>[
+          Container(
+            height: 150,
+            child: Carousel(
+              images: getImages(),
+              animationCurve: Curves.fastOutSlowIn,
+              animationDuration: Duration(milliseconds: 1000),
+              dotSize: 3,
+              indicatorBgPadding: 10,
+              dotBgColor: Colors.transparent,
             ),
-          ],
-       );
+          ),
+        ],
+      );
     }else{
       return Text("No products to show");
     }
@@ -1107,7 +913,7 @@ class _HomeState extends State<HomePage> {
                   child: data["image"] != null ? Image.network(data["image"]) : AvataaarImage(avatar: Avataaar.random())
               ),
               decoration: BoxDecoration(
-                color: Colors.deepOrange,
+                color: Colors.blueAccent,
               ),
             ),
             InkWell(
@@ -1117,18 +923,18 @@ class _HomeState extends State<HomePage> {
               },
               child: ListTile(
                 title: Text('My Account', style: TextStyle(fontSize: 18.0),),
-                leading: Icon(Icons.account_box, color: Colors.red, size: 30,),
+                leading: Icon(Icons.account_box, color: Colors.blueAccent, size: 30,),
               ),
             ),
             InkWell(
               onTap: () {
-              Navigator.push(
-                context, MaterialPageRoute(builder: (context) => MyOrder(email: widget.user.email,)));
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => MyOrder(email: widget.user.email,)));
               },
               child: ListTile(
                 title: Text('My Order', style: TextStyle(fontSize: 18.0),),
                 leading: Icon(
-                  Icons.shopping_basket, color: Colors.red, size: 30,),
+                  Icons.shopping_basket, color: Colors.blueAccent, size: 30,),
               ),
             ),
             InkWell(
@@ -1137,7 +943,7 @@ class _HomeState extends State<HomePage> {
               },
               child: ListTile(
                 title: Text('My Favourites', style: TextStyle(fontSize: 18.0),),
-                leading: Icon(Icons.favorite, color: Colors.red, size: 30,),
+                leading: Icon(Icons.favorite, color: Colors.blueAccent, size: 30,),
               ),
             ),
             InkWell(
@@ -1146,7 +952,7 @@ class _HomeState extends State<HomePage> {
               },
               child: ListTile(
                 title: Text('My Cart', style: TextStyle(fontSize: 18.0),),
-                leading: Icon(Icons.shopping_cart, color: Colors.red, size: 30,),
+                leading: Icon(Icons.shopping_cart, color: Colors.blueAccent, size: 30,),
               ),
             ),
             InkWell(
@@ -1156,7 +962,7 @@ class _HomeState extends State<HomePage> {
               },
               child: ListTile(
                 title: Text('Categories', style: TextStyle(fontSize: 18.0),),
-                leading: Icon(Icons.category, color: Colors.red, size: 30,),
+                leading: Icon(Icons.category, color: Colors.blueAccent, size: 30,),
               ),
             ),
             InkWell(
@@ -1166,7 +972,7 @@ class _HomeState extends State<HomePage> {
               },
               child: ListTile(
                 title: Text('Brands', style: TextStyle(fontSize: 18.0),),
-                leading: Icon(Icons.label, color: Colors.red, size: 30,),
+                leading: Icon(Icons.label, color: Colors.blueAccent, size: 30,),
               ),
             ),
             Divider(
@@ -1221,7 +1027,7 @@ class _HomeState extends State<HomePage> {
       }
     });
     dataCost.add(temp);
-    return Text(dataCost.last.toString());
+    return Text(dataCost.last.toString(), style: TextStyle(color: Colors.white),);
   }
 }
 
