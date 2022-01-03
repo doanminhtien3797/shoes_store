@@ -19,7 +19,7 @@ class _ListBrandsState extends State<ListBrands> {
         backgroundColor: Colors.white,
       ),
       body: StreamBuilder(
-        stream: Firestore.instance.collection("brands").snapshots(),
+        stream: Firestore.instance.collection("brandsShoes").snapshots(),
         builder: (context,snapshot){
           if(!snapshot.hasData){
             return Text("No brands exist");

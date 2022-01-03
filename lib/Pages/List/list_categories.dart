@@ -19,7 +19,7 @@ class _ListCategoriesState extends State<ListCategories> {
         backgroundColor: Colors.white,
       ),
       body: StreamBuilder(
-        stream: Firestore.instance.collection("Categories").snapshots(),
+        stream: Firestore.instance.collection("CategoriesShoes").snapshots(),
         builder: (context,snapshot){
           if(!snapshot.hasData){
             return Text("No categories exist");

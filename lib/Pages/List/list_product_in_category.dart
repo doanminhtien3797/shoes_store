@@ -21,7 +21,7 @@ class _ListProductsInCategoryState extends State<ListProductsInCategory> {
         backgroundColor: Colors.white,
       ),
       body: StreamBuilder(
-        stream: Firestore.instance.collection("products").snapshots(),
+        stream: Firestore.instance.collection("productsShoes").snapshots(),
         builder: (context,snapshot){
           if(!snapshot.hasData){
             return Center(

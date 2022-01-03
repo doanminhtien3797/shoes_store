@@ -193,7 +193,7 @@ class _HomeState extends State<HomePage> {
                   ),
                   Container(
                     child: StreamBuilder(
-                        stream: Firestore.instance.collection("Categories").snapshots(),
+                        stream: Firestore.instance.collection("CategoriesShoes").snapshots(),
                         builder: (context, snapshot){
                           if(!snapshot.hasData){
                             return Text("No Categories exist");
@@ -213,7 +213,7 @@ class _HomeState extends State<HomePage> {
                   ),
                   Container(
                     child: StreamBuilder(
-                        stream: Firestore.instance.collection("brands").snapshots(),
+                        stream: Firestore.instance.collection("brandsShoes").snapshots(),
                         builder: (context, snapshot){
                           if(!snapshot.hasData){
                             return Text("No Brands exist");
@@ -344,7 +344,7 @@ class _HomeState extends State<HomePage> {
                   ),
                   Container(
                     child: StreamBuilder(
-                        stream: Firestore.instance.collection("Categories").snapshots(),
+                        stream: Firestore.instance.collection("CategoriesShoes").snapshots(),
                         builder: (context, snapshot){
                           if(!snapshot.hasData){
                             return Text("No Categories exist");
@@ -364,7 +364,7 @@ class _HomeState extends State<HomePage> {
                   ),
                   Container(
                     child: StreamBuilder(
-                        stream: Firestore.instance.collection("brands").snapshots(),
+                        stream: Firestore.instance.collection("brandsShoes").snapshots(),
                         builder: (context, snapshot){
                           if(!snapshot.hasData){
                             return Text("No Brands exist");
@@ -495,7 +495,7 @@ class _HomeState extends State<HomePage> {
                   ),
                   Container(
                     child: StreamBuilder(
-                        stream: Firestore.instance.collection("Categories").snapshots(),
+                        stream: Firestore.instance.collection("CategoriesShoes").snapshots(),
                         builder: (context, snapshot){
                           if(!snapshot.hasData){
                             return Text("No Categories exist");
@@ -515,7 +515,7 @@ class _HomeState extends State<HomePage> {
                   ),
                   Container(
                     child: StreamBuilder(
-                        stream: Firestore.instance.collection("brands").snapshots(),
+                        stream: Firestore.instance.collection("brandsShoes").snapshots(),
                         builder: (context, snapshot){
                           if(!snapshot.hasData){
                             return Text("No Brands exist");
@@ -646,7 +646,7 @@ class _HomeState extends State<HomePage> {
                   ),
                   Container(
                     child: StreamBuilder(
-                        stream: Firestore.instance.collection("Categories").snapshots(),
+                        stream: Firestore.instance.collection("CategoriesShoes").snapshots(),
                         builder: (context, snapshot){
                           if(!snapshot.hasData){
                             return Text("No Categories exist");
@@ -666,7 +666,7 @@ class _HomeState extends State<HomePage> {
                   ),
                   Container(
                     child: StreamBuilder(
-                        stream: Firestore.instance.collection("brands").snapshots(),
+                        stream: Firestore.instance.collection("brandsShoes").snapshots(),
                         builder: (context, snapshot){
                           if(!snapshot.hasData){
                             return Text("No Brands exist");
@@ -839,7 +839,7 @@ class _HomeState extends State<HomePage> {
         Container(
           width: MediaQuery.of(context).size.width / 2 ,
           child: Card(
-            color: Colors.white70,
+            //color: Colors.white70,
             child: ListTile(
               onTap: (){
                 Navigator.push(context, MaterialPageRoute(builder: (context)=>ListProductsInCategory(category: document["categoryName"])));
@@ -883,7 +883,7 @@ class _HomeState extends State<HomePage> {
         Container(
           width: 135,
           child: Card(
-            color: Colors.white70,
+            //color: Colors.white70,
             child: ListTile(
               onTap: (){
                 Navigator.push(context, MaterialPageRoute(builder: (context)=>ListProductsInBrand(brand: document["brandName"])));

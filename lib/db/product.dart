@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ProductServices{
   Firestore _fireStore = Firestore.instance;
-  String ref = "products";
+  String ref = "productsShoes";
 
   Future<List<DocumentSnapshot>> getProducts() =>
       _fireStore.collection(ref).getDocuments().then((snaps) {

@@ -323,7 +323,7 @@ class _ProductDetails extends State<ProductDetails> {
                               //height: 200,
                               child: StreamBuilder(
                                 stream: Firestore.instance.collection(
-                                    "products").snapshots(),
+                                    "productsShoes").snapshots(),
                                 builder: (context, snapshot) {
                                   if (!snapshot.hasData) {
                                     return Text("No products exist");
@@ -348,7 +348,7 @@ class _ProductDetails extends State<ProductDetails> {
                               //height: 200,
                               child: StreamBuilder(
                                 stream: Firestore.instance.collection(
-                                    "products").snapshots(),
+                                    "productsShoes").snapshots(),
                                 builder: (context, snapshot) {
                                   if (!snapshot.hasData) {
                                     return Text("No products exist");
