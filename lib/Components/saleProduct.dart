@@ -21,7 +21,9 @@ class _SaleProductsState extends State<SaleProducts> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
       height: 230,
+      color: Colors.grey[300],
       child: ListView(
           scrollDirection: Axis.horizontal,
           shrinkWrap: true,

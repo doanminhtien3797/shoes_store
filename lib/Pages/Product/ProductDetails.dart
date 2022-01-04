@@ -174,12 +174,14 @@ class _ProductDetails extends State<ProductDetails> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
-                            Padding(
-                              padding: const EdgeInsets.all(10.0),
-                              child: Text('${widget.name}', style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16),),
+                            Expanded(
+                              child: Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: Text('${widget.name}', style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16),),
+                              ),
                             ),
 
                             Padding(
@@ -328,12 +330,16 @@ class _ProductDetails extends State<ProductDetails> {
                                   if (!snapshot.hasData) {
                                     return Text("No products exist");
                                   } else {
-                                    return GridView.count(
-                                      shrinkWrap: true,
-                                        physics: NeverScrollableScrollPhysics(),
-                                        crossAxisCount: 2,
-                                        children: getProductsSameCategory(
-                                            snapshot)
+                                    return Container(
+                                      padding: EdgeInsets.symmetric(horizontal: 10),
+                                      color: Colors.grey[300],
+                                      child: GridView.count(
+                                        shrinkWrap: true,
+                                          physics: NeverScrollableScrollPhysics(),
+                                          crossAxisCount: 2,
+                                          children: getProductsSameCategory(
+                                              snapshot)
+                                      ),
                                     );
                                   }
                                 },
@@ -353,11 +359,16 @@ class _ProductDetails extends State<ProductDetails> {
                                   if (!snapshot.hasData) {
                                     return Text("No products exist");
                                   } else {
-                                    return GridView.count(
-                                        shrinkWrap: true,
-                                        physics: NeverScrollableScrollPhysics(),
-                                        crossAxisCount: 2,
-                                        children: getProductsSameBrand(snapshot)
+                                    return Container(
+                                      padding: EdgeInsets.symmetric(horizontal: 10),
+                                      height: 230,
+                                      color: Colors.grey[300],
+                                      child: GridView.count(
+                                          shrinkWrap: true,
+                                          physics: NeverScrollableScrollPhysics(),
+                                          crossAxisCount: 2,
+                                          children: getProductsSameBrand(snapshot)
+                                      ),
                                     );
                                   }
                                 },
@@ -496,7 +507,7 @@ class _ProductDetails extends State<ProductDetails> {
       }
     }).toList();
       return data.map((DocumentSnapshot item) {
-        return FeaturedCard(
+        return FeaturedCardForGrid(
             id: item["id"],
             name: item["name"],
             price: item["price"],
@@ -522,7 +533,7 @@ class _ProductDetails extends State<ProductDetails> {
       }
     }).toList();
     return data.map((DocumentSnapshot item) {
-      return FeaturedCard(
+      return FeaturedCardForGrid(
           id: item["id"],
           name: item["name"],
           price: item["price"],
